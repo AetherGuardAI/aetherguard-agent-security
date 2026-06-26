@@ -1,0 +1,6 @@
+pyautogen>=0.2.35,<0.3
+python-dotenv>=1.0.0
+httpx>=0.27.0
+fastapi>=0.138.0
+starlette>=1.3.1
+aetherguard-agent-security

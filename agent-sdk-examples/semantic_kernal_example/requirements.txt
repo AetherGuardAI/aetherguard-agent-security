@@ -1,0 +1,11 @@
+
+## requirements.txt
+python-dotenv>=1.0.1,<2.0.0
+httpx>=0.27.0,<1.0.0
+semantic-kernel==1.18.0
+fastapi>=0.138.0
+starlette>=1.3.1
+
+# Internal/private dependency.
+# Replace with your internal package index URL if needed.
+aetherguard-agent-security>=0.1.0

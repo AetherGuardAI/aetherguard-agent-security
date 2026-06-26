@@ -106,7 +106,7 @@ All 8 security controls + the full advanced suite fire automatically on every to
 | 📋 Session trace + provenance | ✅ | Hash-chain audit |
 | 🤝 Multi-agent delegation (sub-agents) | ✅ | Via `parent_session_id` |
 | 🚨 Quarantine / incidents | ✅ | Operational controls |
-| 📄 Agent SBOM | ✅ | CycloneDX 1.6, KMS-signed (web portal only) |
+| 📄 Agent SBOM | ❌ | CycloneDX 1.6, KMS-signed (web portal only) |
 | 🆔 **Federation (SPIFFE + JIT tokens)** | ❌ | SDK only |
 
 > 💡 Federation (SPIFFE/SVID + ephemeral JIT tokens) is an additional identity layer provided by the SDK.

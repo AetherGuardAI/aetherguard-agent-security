@@ -174,6 +174,15 @@ The following environment variables are used in the CrewAI example (and apply to
 | Directory | Framework | What It Demonstrates |
 |-----------|-----------|---------------------|
 | `crewai_example/` | 🚢 CrewAI | Two agents, HITL approval, output scanning, proxy integration |
+| `autogen_example/` | 🤝 AutoGen | GroupChat orchestration, coordinator + specialist agents, HITL approval |
+| `langchain_example/` | 🔗 LangChain | OpenAI integration, tool authorization, HITL approval, output scanning |
+| `langgraph_example/` | 🔗 LangGraph | Sequential multi-agent workflow, OpenAI tool-calling, HITL approval |
+| `semantic_kernal_example/` | 🧩 Semantic Kernel | Plugin function security, planner integration, policy enforcement |
+| `anthropic_claude_example/` | 🟣 Anthropic Claude | CrewAI + Claude, Anthropic-compatible proxy routing, HITL approval |
+| `google_gemini_example/` | 🔵 Google Gemini | CrewAI + Gemini, LiteLLM integration, HITL approval |
+| `crewai_mcp_example/` | 🔌 CrewAI + MCP | Secured MCP transport, real stdio MCP server, 3 agents, output scanning |
+| `multi_agent_workflow_example/` | 🔗 LangGraph | 7 specialized agents, supervisor routing, compliance gate, HITL approval |
+| `agent_federation_example/` | 🚢 CrewAI | SPIFFE/SPIRE identity, JIT tokens, RFC 8693 token exchange, delegation |
 
 ---
 
@@ -184,17 +193,15 @@ Agent API calls count toward your tenant's plan quota (same pool as proxy and RA
 | Tier | Requests/Month | Requests/Minute | Concurrent Sessions |
 |------|---------------|-----------------|---------------------|
 | 🆓 Free | 1000 | 10 | 3 |
-| ⭐ Starter | 25,000 | 100 | 10 |
-| 💼 Professional | 150,000 | 100 | 50 |
 | 🏢 Enterprise | custom/unlimited | 10,000 | 500 |
 
 ---
 
 ## 🆘 Support
 
-- 🌐 Portal: [https://portal.aetherguard.ai](https://portal.aetherguard.ai)
-- 📖 Documentation: [info@aetherguard.ai](info@aetherguard.ai)
+- 🌐 Portal: [https://genesis.aetherguard.ai](https://portal.aetherguard.ai)
+- 📖 Documentation: [https://docs.aetherguard.ai](https://docs.aetherguard.ai)
 
 ---
 
- AetherGuard, Inc
+<p align="center">© 2026 AetherGuard, Inc.</p>

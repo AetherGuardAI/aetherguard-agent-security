@@ -7,7 +7,7 @@
 
 ## 🚀 Getting Started
 
-1. **Sign up** at [https://portal.aetherguard.ai](https://portal.aetherguard.ai)
+1. **Sign up** at [https://genesis.aetherguard.ai](https://genesis.aetherguard.ai)
 2. Create your tenant and generate an **API key**
 3. You'll receive:
    - `AETHERGUARD_API_URL` — your backend API endpoint

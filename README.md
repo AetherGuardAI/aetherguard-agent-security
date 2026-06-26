@@ -65,7 +65,7 @@ AetherGuard's security architecture aligns with the key principles of the **OWAS
 
 > 🚀 **Get started:** Sign up at [genesis.aetherguard.ai](https://genesis.aetherguard.ai), create a tenant, and grab your API key.
 
-> 📦 **Prefer Python?** Install `pip install aetherguard-agent-security[remote]` for caching, batching, and the full federation layer.
+> 📦 **Prefer Python?** Contact AetherGuard AI for SDK `agent-runtime-operating-environment-sdk` for caching, batching, and the full federation layer.
 
 ---
 
@@ -118,7 +118,7 @@ All 8 security controls + the full advanced suite fire automatically on every to
 
 **Base URL:**
 ```
-https://agent-gateway.aetherguard.ai/api/v1/agents
+https://agentexample.aetherguard.ai/api/v1/agents
 ```
 
 **Header:**

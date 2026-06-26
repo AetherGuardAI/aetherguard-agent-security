@@ -13,7 +13,7 @@
    - `AETHERGUARD_API_URL` — your backend API endpoint
    - `AETHERGUARD_PROXY_URL` — your proxy-engine endpoint (for LLM call scanning)
    - `AETHERGUARD_API_KEY` — your tenant API key (starts with `ag_`)
-4. Install the SDK: `pip install aetherguard-agent-security[remote]` - contact AetherGuard team for SDK
+4. Install the SDK: `pip install aetherguard-agent-security-runtime-operating-environment` - contact AetherGuard team for SDK
 
 ---
 

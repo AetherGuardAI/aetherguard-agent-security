@@ -1,5 +1,5 @@
 <img width="120" height="120" alt="ag_security_logo - github" src="https://github.com/user-attachments/assets/0d5b299d-c9e9-4024-9356-25216f9740ca" /><br/>
-# AetherGuard Agent Security — Examples
+# AetherGuard Agent Runtime Operating Environment — Examples
 
 > 🤖 Zero-trust runtime security for autonomous AI agents. Evaluate every tool call, scan every output, approve high-risk actions — before they execute.
 

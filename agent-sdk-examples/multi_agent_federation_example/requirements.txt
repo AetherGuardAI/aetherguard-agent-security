@@ -1,0 +1,14 @@
+# AetherGuard Multi-Agent Federation Example — Dependencies
+# Install with: pip install -r requirements.txt
+
+# AetherGuard SDK (install from local source with remote extras)
+# pip install -e "../aetherguard-agent-security[remote]"
+
+# CrewAI framework for multi-agent orchestration
+crewai>=0.80.0
+
+# Environment variable management
+python-dotenv>=1.0.0
+
+# HTTP client (used for HITL approval polling)
+httpx>=0.27.0

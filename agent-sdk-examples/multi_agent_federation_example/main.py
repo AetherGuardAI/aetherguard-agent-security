@@ -526,7 +526,7 @@ async def setup_aetherguard():
         agent_name="Coordinator Agent",
         tenant_id=TENANT_ID,
         permitted_tools=all_tools,  # Superset — enables scope reduction to children
-        data_classifications=["internal", "financial", "market-research"],
+        data_classifications=["internal", "financial", "market-research","pii"],
         permitted_destinations=[],
         max_tool_calls=30,
         max_session_secs=900,
@@ -559,12 +559,12 @@ async def setup_aetherguard():
             "database_query", "risk_assessment", "data_transform",  # Passed to DataAnalysis
             "execute_script",                                 # Passed to Scripting (via DataAnalysis)
         ],  # ⊆ coordinator's all_tools
-        data_classifications=["internal", "financial", "market-research"],
+        data_classifications=["internal", "financial", "market-research","pii"],
         permitted_destinations=[],
         max_tool_calls=15,
         max_session_secs=600,
         requires_human_approval=False,
-        intent_threshold=0.00,
+        intent_threshold=0.04,
         allow_external_network=True,
         output_scanning_enabled=True,
         loop_detection_enabled=True,
@@ -588,7 +588,7 @@ async def setup_aetherguard():
             "database_query", "risk_assessment", "data_transform",  # Passed to DataAnalysis
             "execute_script",                                 # Passed to Scripting (via DataAnalysis)
         ],  # ⊆ research's permitted_tools
-        data_classifications=["internal","pii"],
+        data_classifications=["internal","financial"],
         permitted_destinations=[],
         max_tool_calls=10,
         max_session_secs=300,
@@ -612,16 +612,16 @@ async def setup_aetherguard():
         agent_name="Data Analysis Agent",
         tenant_id=TENANT_ID,
         permitted_tools=["database_query", "risk_assessment", "data_transform", "execute_script"],  # ⊆ security
-        data_classifications=["internal", "financial"],
+        data_classifications=["internal","pii"],  # ⊆ security's classifications
         permitted_destinations=[],
-        max_tool_calls=20,  # Higher limit — this agent executes many tools per task
-        max_session_secs=600,
+        max_tool_calls=10,
+        max_session_secs=240,  # < security's 300s (accounts for elapsed time at delegation)
         requires_human_approval=False,
-        intent_threshold=0.00,
+        intent_threshold=0.02,
         allow_external_network=False,
         output_scanning_enabled=True,
         loop_detection_enabled=True,
-        token_budget=TokenBudget(max_total_tokens=60000, max_tokens_per_step=12000),
+        token_budget=TokenBudget(max_total_tokens=35000, max_tokens_per_step=8000),  # < security's 40000
     )
     await ensure_agent_profile(data_analysis_profile)
 
@@ -638,13 +638,13 @@ async def setup_aetherguard():
         data_classifications=["internal"],
         permitted_destinations=[],
         max_tool_calls=5,
-        max_session_secs=300,
+        max_session_secs=240,  # < research's 600s (accounts for elapsed time)
         requires_human_approval=False,
-        intent_threshold=0.00,
+        intent_threshold=0.01,
         allow_external_network=False,
         output_scanning_enabled=True,
         loop_detection_enabled=True,
-        token_budget=TokenBudget(max_total_tokens=30000, max_tokens_per_step=8000),
+        token_budget=TokenBudget(max_total_tokens=25000, max_tokens_per_step=8000),  # < research's 50000
     )
     await ensure_agent_profile(reporting_profile)
 
@@ -658,17 +658,17 @@ async def setup_aetherguard():
         agent_id="scripting-agent",
         agent_name="Scripting Agent",
         tenant_id=TENANT_ID,
-        permitted_tools=["execute_script"],  # ⊆ coordinator's all_tools
+        permitted_tools=["execute_script"],  # ⊆ data-analysis's permitted_tools
         data_classifications=["internal"],
         permitted_destinations=[],
-        max_tool_calls=10,
-        max_session_secs=300,
+        max_tool_calls=5,   # < data-analysis's 10
+        max_session_secs=180,  # < data-analysis's 240s
         requires_human_approval=False,
-        intent_threshold=0.00,
+        intent_threshold=0.01,
         allow_external_network=False,
         output_scanning_enabled=True,
         loop_detection_enabled=True,
-        token_budget=TokenBudget(max_total_tokens=30000, max_tokens_per_step=8000),
+        token_budget=TokenBudget(max_total_tokens=25000, max_tokens_per_step=6000),  # < data-analysis's 35000
     )
     await ensure_agent_profile(scripting_profile)
 
@@ -786,7 +786,7 @@ async def setup_aetherguard():
     data_analysis_session = await ag.start_session(
         agent_id="data-analysis-agent",
         tenant_id=TENANT_ID,
-        declared_intent="Process and analyze validated market data using multiple tools",
+        declared_intent="Process and analyze validated market data using multiple tools database_query, risk_assessment, data_transform",
         parent_session_id=security_session.session_id,
         parent_step=1,
         parent_token=security_session.jit_token,
